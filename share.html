@@ -133,7 +133,10 @@
         </tr>
         <tr>
             <td>
-                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                <fb:login-button 
+                    scope="public_profile,email,pages_manage_posts,pages_read_engagement" 
+                    onlogin="checkLoginState();">
+                </fb:login-button>
                 <div id="status"></div>
             </td>
             <td>
