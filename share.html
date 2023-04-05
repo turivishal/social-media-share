@@ -177,6 +177,7 @@
       
       
           FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+            console.log("rrrrr", response)
             statusChangeCallback(response);        // Returns the login status.
           });
         };
