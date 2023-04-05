@@ -43,7 +43,7 @@
 
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=465293611203356&autoLogAppEvents=1" nonce="PKchkYZT"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0&appId=322002990138198&autoLogAppEvents=1" nonce="tJa07MjD"></script>
     <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
     <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
 
@@ -125,19 +125,69 @@
     <table border="1" cellpadding="10px">
         <tr>
             <th>
-                <a href="https://learn.microsoft.com/en-gb/linkedin/consumer/integrations/self-serve/share-on-linkedin">LinkedIn SignIn</a>
+                <a href="#">Facebook</a>
+            </th>
+            <th>
+                <a href="https://learn.microsoft.com/en-gb/linkedin/consumer/integrations/self-serve/share-on-linkedin">Share on LinkedIn</a>
             </th>
         </tr>
         <tr>
             <td>
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                <div id="status"></div>
+            </td>
+            <td>
                 <a 
                     target="_blank" 
                     href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=782wnla1qfgyag&redirect_uri=https://dev.evenuefy.com/api/notifyservices/api/li/callback&state=DCEeFWf45A53sdfKef424&scope=r_liteprofile%20r_emailaddress%20w_member_social">
-                    SignIn
+                    <img alt="SignIn" src="linkedin-Sign-In-Large---Default.png" />
                 </a>
             </td>
         </tr>
     </table>
+
+    <script>
+        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+          console.log('statusChangeCallback');
+          console.log(response);                   // The current login status of the person.
+          if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+            testAPI();  
+          } else {                                 // Not logged into your webpage or we are unable to tell.
+            document.getElementById('status').innerHTML = 'Please log ' +
+              'into this webpage.';
+          }
+        }
+      
+        function checkLoginState() {               // Called when a person is finished with the Login Button.
+          FB.getLoginStatus(function(response) {   // See the onlogin handler
+            statusChangeCallback(response);
+          });
+        }
+      
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '322002990138198',
+            cookie     : true,                     // Enable cookies to allow the server to access the session.
+            xfbml      : true,                     // Parse social plugins on this webpage.
+            version    : 'v14.0'           // Use this Graph API version for this call.
+          });
+      
+      
+          FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+            statusChangeCallback(response);        // Returns the login status.
+          });
+        };
+       
+        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+          console.log('Welcome!  Fetching your information.... ');
+          FB.api('/me', function(response) {
+            console.log('Successful login for: ' + response.name);
+            document.getElementById('status').innerHTML =
+              'Thanks for logging in, ' + response.name + '!';
+          });
+        }
+      
+      </script>
 
 </body>
 
