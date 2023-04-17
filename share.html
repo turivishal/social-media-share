@@ -14,7 +14,7 @@
     <meta property="og:image:width"        content="100" />
     <meta property="og:image:height"       content="100" />
     <meta property="og:image:alt"          content="This is Evenuefy!" />
-    <meta property="fb:app_id"             content="465293611203356" />    
+    <meta property="fb:app_id"             content="465293611203356" />
 
     <!-- <meta property="og:video"              content="https://www.youtube.com/watch?v=ZODmXo4XCek" />
     <meta property="og:video:url"          content="https://www.youtube.com/watch?v=ZODmXo4XCek" />
@@ -134,10 +134,11 @@
         <tr>
             <td>
                 <fb:login-button 
-                    scope="public_profile,email,pages_manage_posts,pages_read_engagement" 
+                    scope="public_profile,email,pages_manage_posts,pages_read_engagement,publish_video" 
                     onlogin="checkLoginState();">
                 </fb:login-button>
                 <div id="status"></div>
+                <button id="fbConnect">Connect</button>
             </td>
             <td>
                 <a 
@@ -150,6 +151,18 @@
     </table>
 
     <script>
+        document.getElementById("fbConnect").addEventListener("click", (e) => {
+            let app_id = "322002990138198",
+                redirectURL = "https://turivishal.github.io/social-media-share/share.html?from=fb",
+                scops = "pages_manage_metadata,pages_read_engagement,pages_read_user_content,read_insights,pages_manage_posts,pages_manage_engagement,publish_to_groups,groups_access_member_info,leads_retrieval,business_management,pages_messaging",
+                response_type = "granted_scopes,code",
+                state = '{"fromme":"123123"}',
+                authURL = "https://www.facebook.com/v14.0/dialog/oauth";
+            let next = `${authURL}?client_id=${app_id}&response_type=${response_type}&scope=${scops}&redirect_uri=${encodeURIComponent(redirectURL)}&state=${state}`;
+            let r = `https://www.facebook.com/login/reauth.php?app_id=${app_id}&signed_next=1&next=${encodeURIComponent(next)}`;
+            window.open(r, '_blank');
+        })
+
         function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
           console.log('statusChangeCallback');
           console.log(response);                   // The current login status of the person.
