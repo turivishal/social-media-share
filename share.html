@@ -158,7 +158,7 @@
                 response_type = "granted_scopes,code",
                 state = '{"fromme":"123123"}',
                 authURL = "https://www.facebook.com/v14.0/dialog/oauth";
-            let next = `${authURL}?client_id=${app_id}&response_type=${response_type}&scope=${scops}&redirect_uri=${encodeURIComponent(redirectURL)}&state=${state}`;
+            let next = `${authURL}?client_id=${app_id}&response_type=${response_type}&scope=${scops}&redirect_uri=${redirectURL}&state=${state}`;
             let r = `https://www.facebook.com/login/reauth.php?app_id=${app_id}&signed_next=1&next=${encodeURIComponent(next)}`;
             window.open(r, '_blank');
         })
