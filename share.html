@@ -152,15 +152,19 @@
 
     <script>
         document.getElementById("fbConnect").addEventListener("click", (e) => {
-            let app_id = "322002990138198",
-                redirectURL = "https://turivishal.github.io/social-media-share/share.html",
-                scops = "pages_manage_metadata,pages_read_engagement,pages_read_user_content,read_insights,pages_manage_posts,pages_manage_engagement,publish_to_groups,groups_access_member_info,leads_retrieval,business_management,pages_messaging",
-                response_type = "granted_scopes,token",
-                state = '{"fromme":"123123"}',
-                authURL = "https://www.facebook.com/v14.0/dialog/oauth";
-            let next = `${authURL}?client_id=${app_id}&response_type=${response_type}&scope=${scops}&redirect_uri=${redirectURL}&state=${state}`;
-            let r = `https://www.facebook.com/login/reauth.php?app_id=${app_id}&signed_next=1&next=${encodeURIComponent(next)}`;
-            window.open(r, '_blank');
+            // window.open("http://localhost:3011/api/som/fb/connect/123");
+            window.open("https://dev.evenuefy.com/api/notifyservices/api/som/fb/connect/1234/644656ccf20fc7580bb4572b");
+            
+
+            // let app_id = "322002990138198",
+            //     redirectURL = "https://turivishal.github.io/social-media-share/share.html",
+            //     scops = "pages_manage_metadata,pages_read_engagement,pages_read_user_content,read_insights,pages_manage_posts,pages_manage_engagement,publish_to_groups,groups_access_member_info,leads_retrieval,business_management,pages_messaging",
+            //     response_type = "granted_scopes,token",
+            //     state = '{"fromme":"123123"}',
+            //     authURL = "https://www.facebook.com/v14.0/dialog/oauth";
+            // let next = `${authURL}?client_id=${app_id}&response_type=${response_type}&scope=${scops}&redirect_uri=${redirectURL}&state=${state}`;
+            // let r = `https://www.facebook.com/login/reauth.php?app_id=${app_id}&signed_next=1&next=${encodeURIComponent(next)}`;
+            // window.open(r, '_blank');
 
             // https://turivishal.github.io/social-media-share/share.html?code=AQBk5F0pvTfhaX52AJ4xCwwhFjtlcf9nNjjK9KGwue-VsUYV4GYGf3s2QXWNB6ipFtAwdZAfSCgXneEipgMUQc8lYuMvRwpmAXcyMQxDI4TqEJC-2D1owHL58k1_zJrUus10cGFOQMyRsYDWMR3pu-O0w1Y9aLoO6U-OnK1_zaY7Cvr-GZjvS5y3hN9b8vWdjNcs76Tb7W9SzD1DL9fdEeLPximCbmmurzbfUrJB8EvmoURqE5vYrxRxHbf1WZuQfPyZXtTPE3Fy3ILRRCBbFfn2oONEOHuqNeDqjBBD08gqON6aa6evvgok79ZroPh0lWI5kGcRa_KYEimL5P0vKqa8oe_Mzqu0sRtS1KzBHxFe383ngfZcK1O4LHwf2qX0AgNwH-ieyoGzbXZV1Ymg1j_itbsDVEhDgahA_L3rvTaElQ&granted_scopes=email%2Cread_insights%2Cpages_show_list%2Cpages_messaging%2Cpublish_to_groups%2Cgroups_access_member_info%2Cleads_retrieval%2Cpages_read_engagement%2Cpages_manage_metadata%2Cpages_read_user_content%2Cpages_manage_posts%2Cpages_manage_engagement%2Cpublic_profile&denied_scopes=business_management%2Cwhatsapp_business_management%2Cwhatsapp_business_messaging&state=%7B%22fromme%22%3A%22123123%22%7D#_=_
         })
